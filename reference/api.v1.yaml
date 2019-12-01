@@ -35,3 +35,5 @@ components:
           type: string
         firstName:
           type: string
+        dateOfBirth:
+          type: string
