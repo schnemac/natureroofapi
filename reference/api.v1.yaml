@@ -28,6 +28,8 @@ components:
     mCustomer:
       title: mCustomer
       type: object
+      x-examples:
+        example-1: {}
       properties:
         id:
           type: string
@@ -37,3 +39,4 @@ components:
           type: string
         dateOfBirth:
           type: string
+          format: date
