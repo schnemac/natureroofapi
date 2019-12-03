@@ -17,6 +17,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/mCustomer'
       operationId: get-customer
+      description: ''
     parameters:
       - schema:
           type: string
@@ -27,16 +28,24 @@ components:
   schemas:
     mCustomer:
       title: mCustomer
-      type: object
       x-examples:
         example-1: {}
+      type: object
       properties:
         id:
           type: string
+          example: CUST00000000001
         lastName:
           type: string
+          example: Meier
         firstName:
           type: string
+          example: Heinz
         dateOfBirth:
           type: string
           format: date
+      required:
+        - id
+        - lastName
+        - firstName
+        - dateOfBirth
