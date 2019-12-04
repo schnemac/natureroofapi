@@ -15,7 +15,7 @@ paths:
           content:
             application/xml:
               schema:
-                $ref: '#/components/schemas/mCustomers'
+                $ref: '#/components/schemas/mCustomer'
       operationId: get-customer
       description: ''
     parameters:
@@ -26,7 +26,7 @@ paths:
         required: true
 components:
   schemas:
-    mCustomer:
+    mPerson:
       title: mCustomer
       x-examples:
         example-1: {}
@@ -49,7 +49,7 @@ components:
         - lastName
         - firstName
         - dateOfBirth
-    mCustomers:
+    mCustomer:
       type: object
       title: mCustomers
       properties:
@@ -57,7 +57,7 @@ components:
           type: object
           properties:
             person:
-              $ref: '#/components/schemas/mCustomer'
+              $ref: '#/components/schemas/mPerson'
             address:
               $ref: '#/components/schemas/mAddress'
             contact:
