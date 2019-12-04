@@ -44,24 +44,14 @@ components:
         dateOfBirth:
           type: string
           format: date
+        salutation:
+          type: string
+          example: Herr
       required:
-        - id
         - lastName
         - firstName
         - dateOfBirth
-    mCustomer:
-      type: object
-      title: mCustomers
-      properties:
-        customer:
-          type: object
-          properties:
-            person:
-              $ref: '#/components/schemas/mPerson'
-            address:
-              $ref: '#/components/schemas/mAddress'
-            contact:
-              $ref: '#/components/schemas/mContact'
+        - salutation
     mAddress:
       title: mAddress
       type: object
@@ -84,7 +74,6 @@ components:
           type: string
           example: Laax
       required:
-        - id
         - strasse
         - hausNr
         - plz
@@ -102,3 +91,55 @@ components:
           example: hans.muster@bluewin.ch
       required:
         - email
+    mCustomer:
+      type: object
+      title: mCustomers
+      properties:
+        customer:
+          type: object
+          properties:
+            person:
+              $ref: '#/components/schemas/mPerson'
+            address:
+              $ref: '#/components/schemas/mAddress'
+            contact:
+              $ref: '#/components/schemas/mContact'
+            login:
+              $ref: '#/components/schemas/mLogin'
+            credit:
+              $ref: '#/components/schemas/mCredit'
+    mLogin:
+      title: mLogin
+      type: object
+      properties:
+        id:
+          type: string
+          example: '1'
+        username:
+          type: string
+          example: schnemac
+        secret:
+          type: string
+          example: c03dc1575140c6d59a8cea5cf0828ac7
+      required:
+        - username
+        - secret
+    mCredit:
+      title: mCredit
+      type: object
+      properties:
+        id:
+          type: string
+        cardHolderName:
+          type: string
+          example: Max Muster
+        institute:
+          type: string
+          example: VISA
+        cardNumber:
+          type: string
+          example: 1234 4321 5678 8765
+      required:
+        - cardHolderName
+        - institute
+        - cardNumber
