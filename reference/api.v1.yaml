@@ -50,10 +50,56 @@ components:
         - firstName
         - dateOfBirth
     mCustomers:
+      type: object
       title: mCustomers
+      properties:
+        customer:
+          $ref: '#/components/schemas/mCustomer'
+        address:
+          $ref: '#/components/schemas/mAddress'
+        contact:
+          $ref: '#/components/schemas/mContact'
+      required:
+        - customer
+        - address
+        - contact
+    mAddress:
+      title: mAddress
       type: object
       properties:
-        mCustomer:
-          $ref: '#/components/schemas/mCustomer'
+        id:
+          type: string
+        strasse:
+          type: string
+          example: Via Caplania
+        hausNr:
+          type: integer
+          example: '13'
+        hausNrZusatz:
+          type: string
+          example: A
+        plz:
+          type: string
+          example: '7071'
+        ort:
+          type: string
+          example: Laax
       required:
-        - mCustomer
+        - id
+        - strasse
+        - hausNr
+        - plz
+        - ort
+    mContact:
+      title: mContact
+      type: object
+      properties:
+        mobilePhone:
+          type: string
+          example: +41 79 333 11 22
+        email:
+          type: string
+          format: email
+          example: hans.muster@bluewin.ch
+      required:
+        - email
