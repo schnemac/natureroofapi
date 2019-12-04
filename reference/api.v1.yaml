@@ -53,16 +53,15 @@ components:
       type: object
       title: mCustomers
       properties:
-        customer:
-          $ref: '#/components/schemas/mCustomer'
-        address:
-          $ref: '#/components/schemas/mAddress'
-        contact:
-          $ref: '#/components/schemas/mContact'
-      required:
-        - customer
-        - address
-        - contact
+        customers:
+          type: object
+          properties:
+            customer:
+              $ref: '#/components/schemas/mCustomer'
+            address:
+              $ref: '#/components/schemas/mAddress'
+            contact:
+              $ref: '#/components/schemas/mContact'
     mAddress:
       title: mAddress
       type: object
