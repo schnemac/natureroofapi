@@ -53,10 +53,10 @@ components:
       type: object
       title: mCustomers
       properties:
-        customers:
+        customer:
           type: object
           properties:
-            customer:
+            person:
               $ref: '#/components/schemas/mCustomer'
             address:
               $ref: '#/components/schemas/mAddress'
