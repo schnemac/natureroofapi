@@ -7,7 +7,7 @@ servers:
 paths:
   '/customer/{id}':
     get:
-      summary: Your GET endpoint
+      summary: Customer Interface
       tags: []
       responses:
         '200':
@@ -17,7 +17,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/mCustomer'
       operationId: get-customer
-      description: ''
+      description: Select a given Customer by ID.
     parameters:
       - schema:
           type: string
@@ -73,6 +73,8 @@ components:
         ort:
           type: string
           example: Laax
+        try:
+          $ref: '#/components/schemas/mId'
       required:
         - strasse
         - hausNr
@@ -143,3 +145,11 @@ components:
         - cardHolderName
         - institute
         - cardNumber
+    mId:
+      title: mId
+      type:
+        - string
+        - object
+      properties:
+        id:
+          type: string
