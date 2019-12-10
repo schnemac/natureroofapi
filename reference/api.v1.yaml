@@ -16,8 +16,10 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/mCustomer'
+        '204':
+          description: No entitiy is found.
       operationId: get-customer
-      description: Select a given Customer by ID.
+      description: 'Select a given Customer by ID. If the customer with ID does not exist, the service returns a http code 204 (no content) in the header and an empty body.'
     parameters:
       - schema:
           type: string
@@ -78,6 +80,7 @@ components:
         - hausNr
         - plz
         - ort
+      description: Represents an address in Switzerland.
     mContact:
       title: mContact
       type: object
