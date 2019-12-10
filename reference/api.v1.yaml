@@ -56,8 +56,6 @@ components:
       title: mAddress
       type: object
       properties:
-        id:
-          type: string
         strasse:
           type: string
           example: Via Caplania
@@ -73,7 +71,7 @@ components:
         ort:
           type: string
           example: Laax
-        try:
+        id:
           $ref: '#/components/schemas/mId'
       required:
         - strasse
@@ -147,7 +145,4 @@ components:
         - cardNumber
     mId:
       title: mId
-      type: object
-      properties:
-        id:
-          type: string
+      type: string
