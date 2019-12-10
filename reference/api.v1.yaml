@@ -147,9 +147,7 @@ components:
         - cardNumber
     mId:
       title: mId
-      type:
-        - string
-        - object
+      type: object
       properties:
         id:
           type: string
