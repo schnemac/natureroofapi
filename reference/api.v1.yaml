@@ -29,7 +29,7 @@ paths:
 components:
   schemas:
     mPerson:
-      title: mCustomer
+      title: mPerson
       x-examples:
         example-1: {}
       type: object
