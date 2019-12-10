@@ -32,9 +32,6 @@ components:
         example-1: {}
       type: object
       properties:
-        id:
-          type: string
-          example: CUST00000000001
         lastName:
           type: string
           example: Meier
@@ -47,11 +44,14 @@ components:
         salutation:
           type: string
           example: Herr
+        id:
+          $ref: '#/components/schemas/mId'
       required:
         - lastName
         - firstName
         - dateOfBirth
         - salutation
+      description: Represents a person. A person might be a customer or an employee
     mAddress:
       title: mAddress
       type: object
@@ -89,8 +89,11 @@ components:
           type: string
           format: email
           example: hans.muster@bluewin.ch
+        id:
+          $ref: '#/components/schemas/mId'
       required:
         - email
+      description: 'Represents contact information. So far, mobilePhone and email address are taken into account.'
     mCustomer:
       type: object
       title: mCustomers
@@ -108,28 +111,27 @@ components:
               $ref: '#/components/schemas/mLogin'
             credit:
               $ref: '#/components/schemas/mCredit'
+      description: 'Represents a customer. On this interface a customer is made up by different eintity types, such as address, login and so on.'
     mLogin:
       title: mLogin
       type: object
       properties:
-        id:
-          type: string
-          example: '1'
         username:
           type: string
           example: schnemac
         secret:
           type: string
           example: c03dc1575140c6d59a8cea5cf0828ac7
+        id:
+          $ref: '#/components/schemas/mId'
       required:
         - username
         - secret
+      description: Represents a Login. A login might be related to a customer or an employee.
     mCredit:
       title: mCredit
       type: object
       properties:
-        id:
-          type: string
         cardHolderName:
           type: string
           example: Max Muster
@@ -139,10 +141,15 @@ components:
         cardNumber:
           type: string
           example: 1234 4321 5678 8765
+        id:
+          $ref: '#/components/schemas/mId'
       required:
         - cardHolderName
         - institute
         - cardNumber
+      description: Represents a credit card.
     mId:
-      title: mId
       type: string
+      title: mId
+      example: ENT000000000001
+      description: 'Represents an ID. The ID is otpional, but must be present in all Responses. The ID must not be present in a POST operation, but must be present in a PUT operation. On the interface, the ID is represented by a String. The ID might be a number datatatype in the backend however.'
