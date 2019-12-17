@@ -5,7 +5,7 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  '/customer/{id}':
+  /customer/:
     get:
       summary: Customer Interface
       tags: []
@@ -20,12 +20,34 @@ paths:
           description: No entitiy is found.
       operationId: get-customer
       description: 'Select a given Customer by ID. If the customer with ID does not exist, the service returns a http code 204 (no content) in the header and an empty body.'
-    parameters:
-      - schema:
-          type: string
-        name: id
-        in: path
-        required: true
+    parameters: []
+    post:
+      summary: Create a new Customer
+      operationId: 'post-customer-{id}'
+      responses:
+        '200':
+          description: OK
+      description: Create a non-existing Customer
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: object
+              properties:
+                person:
+                  $ref: '#/components/schemas/mPerson'
+                addressId:
+                  $ref: '#/components/schemas/mId'
+                loginId:
+                  $ref: '#/components/schemas/mId'
+                contactId:
+                  $ref: '#/components/schemas/mId'
+              required:
+                - person
+                - addressId
+                - loginId
+                - contactId
+        description: All Ids must be present in order to create a new Customer. Does that work for you?
 components:
   schemas:
     mPerson:
