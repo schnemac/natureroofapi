@@ -5,7 +5,7 @@ info:
 servers:
   - url: 'http://localhost:3000'
 paths:
-  /customer/:
+  '/customer/{id}':
     get:
       summary: Customer Interface
       tags: []
@@ -25,17 +25,23 @@ paths:
           application/xml:
             schema:
               type: object
-              properties:
-                operation:
-                  $ref: '#/components/schemas/mOperation'
         description: ''
-    parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
     post:
       summary: Create a new Customer
       operationId: 'post-customer-{id}'
       responses:
         '200':
           description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/mOperation'
       description: Create a non-existing Customer
       requestBody:
         content:
