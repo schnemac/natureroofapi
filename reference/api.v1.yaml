@@ -20,6 +20,15 @@ paths:
           description: No entitiy is found.
       operationId: get-customer
       description: 'Select a given Customer by ID. If the customer with ID does not exist, the service returns a http code 204 (no content) in the header and an empty body.'
+      requestBody:
+        content:
+          application/xml:
+            schema:
+              type: object
+              properties:
+                operation:
+                  $ref: '#/components/schemas/mOperation'
+        description: ''
     parameters: []
     post:
       summary: Create a new Customer
@@ -178,3 +187,21 @@ components:
       title: mId
       example: ENT000000000001
       description: 'Represents an ID. The ID is otpional, but must be present in all Responses. The ID must not be present in a POST operation, but must be present in a PUT operation. On the interface, the ID is represented by a String. The ID might be a number datatatype in the backend however.'
+    mOperation:
+      title: mOperation
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/mOperationStatus'
+        entity:
+          $ref: '#/components/schemas/mId'
+    mOperationStatus:
+      title: mOperationStatus
+      type: object
+      properties:
+        success:
+          type: boolean
+        errorCode:
+          type: string
+        errorMessage:
+          type: string
